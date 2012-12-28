@@ -21,26 +21,26 @@ You can easily create your custom Alphabets by extending the `Alphabet` abstract
 
 Just a simple example of conversion between alphabets. Sugar syntax for ya!
 ```java
-	Binary b = new Binary();
-	Decimal d = new Decimal();
+Binary b = new Binary();
+Decimal d = new Decimal();
 
-	Word<Decimal> w1 = d.createWord("10"); // Use the alphabet to create valid words
-	Word<Binary> w2 = w1.convert().to(b); // Pass in an Alphabet implementation
-	Word<Hexadecimal> w3 = w1.convert().to(Hexadecimal.class); // Or just an Alphabet class. JAL instantiates the Alphabet for you!
-	
-	System.out.println(w1+" "+w2+" "+w3);
-	// Prints "10 1010 A"
+Word<Decimal> w1 = d.createWord("10"); // Use the alphabet to create valid words
+Word<Binary> w2 = w1.convert().to(b); // Pass in an Alphabet implementation
+Word<Hexadecimal> w3 = w1.convert().to(Hexadecimal.class); // Or just an Alphabet class. JAL instantiates the Alphabet for you!
+
+System.out.println(w1+" "+w2+" "+w3);
+// Prints "10 1010 A"
 ```
 Imagine you want to implement a [POS](http://en.wikipedia.org/wiki/Point_of_sale) software. You may want to get the corresponding [Code39](http://en.wikipedia.org/wiki/Code_39) barcode string from the automatically generated database id.
 
 ```java
-	Long idFromDatabase = 54341L;
-	
-	Code39 c = new Code39();
-	Word<Code39> code = c.parseLong(idFromDatabase);
-	
-	System.out.println(code);
-	// prints "S31"
+Long idFromDatabase = 54341L;
+
+Code39 c = new Code39();
+Word<Code39> code = c.parseLong(idFromDatabase);
+
+System.out.println(code);
+// prints "S31"
 ```
 # TODO #
 
