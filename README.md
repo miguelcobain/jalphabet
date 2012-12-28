@@ -20,7 +20,7 @@ You can easily create your custom Alphabets by extending the `Alphabet` abstract
 # Example #
 
 Just a simple example of conversion between alphabets. Sugar syntax for ya!
-
+```java
 	Binary b = new Binary();
 	Decimal d = new Decimal();
 
@@ -30,9 +30,10 @@ Just a simple example of conversion between alphabets. Sugar syntax for ya!
 	
 	System.out.println(w1+" "+w2+" "+w3);
 	// Prints "10 1010 A"
-
+```
 Imagine you want to implement a [POS](http://en.wikipedia.org/wiki/Point_of_sale) software. You may want to get the corresponding [Code39](http://en.wikipedia.org/wiki/Code_39) barcode string from the automatically generated database id.
 
+```java
 	Long idFromDatabase = 54341L;
 	
 	Code39 c = new Code39();
@@ -40,7 +41,7 @@ Imagine you want to implement a [POS](http://en.wikipedia.org/wiki/Point_of_sale
 	
 	System.out.println(code);
 	// prints "S31"
-
+```
 # TODO #
 
 - add support for arithmetic operations (It would be neat to be able to sum words)
