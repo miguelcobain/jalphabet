@@ -1,6 +1,6 @@
 # The Java Alphabet Library (**JAL**)#
 
-JAL is an utility library intended to help people to create, manipulate and convert between custom Alphabets. This is particularly useful, for example, for identification code generation.
+JAL is an utility library intended to help people to create manipulate custom Alphabets. This is particularly useful, for example, for identification code generators.
 
 This library conveniently treats alphabets as a [Mathematical Numeral System](http://en.wikipedia.org/wiki/Numeral_system). The goal is to be able to easily convert between alphabets and to make arithmetic operations on your custom alphabets.
 
@@ -19,7 +19,7 @@ You can easily create your custom Alphabets by extending the `Alphabet` abstract
 
 # Example #
 
-Just a simple example of conversion between alphabets. Typesafe sugar syntax for ya!
+Just a simple example of conversion between alphabets. Sugar syntax for ya!
 ```java
 Binary b = new Binary();
 Decimal d = new Decimal();
@@ -44,9 +44,10 @@ System.out.println(code);
 ```
 # TODO #
 
-- add support for arithmetic operations (It would be neat to be able to sum words, for example)
+- add support for arithmetic operations (It would be neat to be able to sum words)
+- add support for exclusions! (manually exclude certain characters from an existing alphabet)
+- add support for the creation of "composite alphabets" through concatenation. For example, an `Alphabet` defined by `Decimal`+"/"+`Code39`. You could have a graph of alphabets, how awesome is that?
 - unit testing
 - more alphabets
 - complete javadoc
 - maybe the algorythms' performance can be improved
-- once stable and tested -> maven central repository
