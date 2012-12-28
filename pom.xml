@@ -6,7 +6,8 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>The Java Alphabet Library</name>
 	<description>Utility library for alphabet manipulation and conversion.</description>
-	<inceptionYear>2011</inceptionYear>
+	<inceptionYear>2012</inceptionYear>
+	<url>https://github.com/miguelcobain/alphabet</url>
 
 	<licenses>
 		<license>
@@ -21,6 +22,12 @@
 			<name>Miguel Andrade</name>
 		</developer>
 	</developers>
+
+	<scm>
+		<connection>scm:git:git@github.com:miguelcobain/alphabet.git</connection>
+		<developerConnection>scm:git:git@github.com:miguelcobain/alphabet.git</developerConnection>
+		<url>https://github.com/miguelcobain/alphabet/</url>
+	</scm>
 
 	<dependencies>
 		<dependency>
@@ -53,5 +60,6 @@
 			</plugin>
 		</plugins>
 	</build>
+
 
 </project>
