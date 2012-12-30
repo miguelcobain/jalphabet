@@ -73,7 +73,6 @@
 				<configuration>
 					<author>false</author>
 					<protected>true</protected>
-					<excludePackageNames>*.internal</excludePackageNames>
 				</configuration>
 			</plugin>
 		</plugins>

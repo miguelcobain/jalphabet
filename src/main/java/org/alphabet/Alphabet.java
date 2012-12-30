@@ -5,22 +5,29 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Class that represents an Alphabet.
+ * 
+ * @param <T extends Alphabet<?>> The own subclass type to be able to create parameterized words.
+ * 
+ * @author Miguel Andrade
+ */
 public abstract class Alphabet<T extends Alphabet<?>>{
 	
-	/*
+	/**
 	 * the characters in the alphabet
 	 */
 	private final char[] alphabet;
-	/*
+	/**
 	 * map of characters in alphabet for faster lookup
 	 */
 	private final Map<Character, Integer> alphabetMap;
-    /*
+    /**
      * the radix of the alphabet
      */
     private final int radix;
     
-    /*
+    /**
      * Builds an Alphabet object from the provided alphabet.
      * 
      * @param alpha A String containing the valid characters in this alphabet.
@@ -45,7 +52,7 @@ public abstract class Alphabet<T extends Alphabet<?>>{
     	this.radix = alphabet.length;
 	}
     
-    /*
+    /**
      * Builds an Alphabet object from the provided alphabet.
      * 
      * @param alpha A char array containing the valid characters in this alphabet.
@@ -54,8 +61,8 @@ public abstract class Alphabet<T extends Alphabet<?>>{
     	this(new String(alpha));
     }
  
-    /*
-     * Builds an Alphabet object of Unicode chars 0 to R-1.
+    /**
+     * Builds an Alphabet object of Unicode chars 0 to radix-1.
      * 
      * @param radix The radix defining the alphabet.
      */
@@ -63,6 +70,12 @@ public abstract class Alphabet<T extends Alphabet<?>>{
 		this(fromRadix(radix));
 	}
 	
+	/**
+	 * Helper method that creates a char array with unicode characters from the provided radix.
+	 * 
+	 * @param radix Destination radix of this alphabet.
+	 * @return A char array.
+	 */
 	private static char[] fromRadix(int radix){
 		char[] alphabet = new char[radix];
 
@@ -73,11 +86,11 @@ public abstract class Alphabet<T extends Alphabet<?>>{
 		return alphabet;
 	}
 
-    /*
-     * Checks if a word is valid in this alphabet
+    /**
+     * Checks if a word is valid in this alphabet.
      * 
      * @param word The word containing the characters to check against this alphabet.
-     * @returns A boolean representing the validity of this word against this alphabet.
+     * @return A boolean representing the validity of this word against this alphabet.
      */
 	public boolean validate(String word) {
 		if(word==null)
@@ -93,11 +106,11 @@ public abstract class Alphabet<T extends Alphabet<?>>{
 		return result;
 	}
 	
-	/*
+	/**
 	 * Computes the offending characters of a word, i.e characters which aren't part of this alphabet.
 	 * 
 	 * @param word The word to test.
-	 * @returns A list of the characters which which aren't part of this alphabet.
+	 * @return A list of the characters which which aren't part of this alphabet.
 	 */
 	public List<Character> offendingCharacters(String word){
 		if(word==null)
@@ -113,19 +126,21 @@ public abstract class Alphabet<T extends Alphabet<?>>{
 		return result;
 	}
 
-	/*
+	/**
 	 * A private method that creates a Word object in this alphabet. No validation is made, to be used internally.
 	 * 
 	 * @param word The String that represents the word.
+	 * @return The created Word object from the provided String.
 	 */
 	private Word<T> makeWord(String word){
 		return new Word<T>(word, this);
 	}
 	
-	/*
+	/**
 	 * Creates a valid Word object in this alphabet.
 	 * 
 	 * @param word The String that represents the word.
+	 * @return A valid word.
 	 */	
 	public Word<T> createWord(String word) throws InvalidWordException {
 		List<Character> offendingChars = offendingCharacters(word);
@@ -138,11 +153,11 @@ public abstract class Alphabet<T extends Alphabet<?>>{
 							+ offendingChars.toString());
 	}
 
-	/*
-	 * Parses a given decimal long into the corresponding word in this alphabet
+	/**
+	 * Parses a given decimal long into the corresponding word in this alphabet.
 	 * 
 	 * @param value The value to parse.
-	 * @returns The Word object that represents the given long.
+	 * @return The Word object that represents the given long.
 	 */
 	public Word<T> parseLong(long value) {
 		int resMod;
@@ -160,21 +175,21 @@ public abstract class Alphabet<T extends Alphabet<?>>{
 		return makeWord(res);
 	}
 
-	/*
+	/**
 	 * Parses a given decimal int into the corresponding word in this alphabet.
 	 * 
 	 * @param value The value to parse.
-	 * @returns The Word object that represents the given long.
+	 * @return The Word object that represents the given long.
 	 */
 	public Word<T> parseInt(int value) {
 		return parseLong(value);
 	}
 	
-	/*
+	/**
 	 * Returns the decimal representation of the given word as a long.
 	 * 
 	 * @param wordObj The Word object to parse.
-	 * @returns The decimal representation of the given word.
+	 * @return The decimal representation of the given word.
 	 */
 	public long toLong(Word<T> wordObj){
 		// unwrap wordObj
@@ -192,11 +207,11 @@ public abstract class Alphabet<T extends Alphabet<?>>{
 		return value;
 	}
 
-	/*
+	/**
 	 * Returns the decimal representation of the given word as an int.
 	 * 
 	 * @param wordObj The Word object to parse.
-	 * @returns The decimal representation of the given word.
+	 * @return The decimal representation of the given word.
 	 */
 	public int toInt(Word<T> wordObj){
 		return (int) toLong(wordObj);
