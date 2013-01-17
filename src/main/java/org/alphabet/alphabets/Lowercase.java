@@ -3,9 +3,15 @@ package org.alphabet.alphabets;
 import org.alphabet.Alphabet;
 
 public class Lowercase extends Alphabet<Lowercase>{
+	
+	final static String ALPHABET = "0123456789ABCDEF";
 
 	public Lowercase() {
-		super("abcdefghijklmnopqrstuvwxyz");
+		super(ALPHABET,"");
+	}
+	
+	public Lowercase(String exclusions) {
+		super(ALPHABET, exclusions);
 	}
 
 }

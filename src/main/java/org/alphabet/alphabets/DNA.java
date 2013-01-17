@@ -4,8 +4,14 @@ import org.alphabet.Alphabet;
 
 public class DNA extends Alphabet<DNA>{
 
+	final static String ALPHABET = "ACTG";
+	
 	public DNA() {
-		super("ACTG");
+		super(ALPHABET,"");
+	}
+	
+	public DNA(String exclusions) {
+		super(ALPHABET, exclusions);
 	}
 
 }

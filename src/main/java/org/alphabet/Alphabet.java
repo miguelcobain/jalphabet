@@ -31,10 +31,24 @@ public abstract class Alphabet<T extends Alphabet<?>>{
      * Builds an Alphabet object from the provided alphabet.
      * 
      * @param alpha A String containing the valid characters in this alphabet.
+     * @param exclusions A String containing the characters to exclude from this alphabet.
      */
-    public Alphabet(String alpha) throws InvalidAlphabetException{
-        // check that alphabet contains no duplicate chars and build alphabet set
-        char[] alphabet = alpha.toCharArray();
+    public Alphabet(String alpha, String exclusions) throws InvalidAlphabetException{
+    	
+    	//exclude chars from alphabet
+    	for (int i = 0; i < exclusions.length(); i++){
+    	    char c = exclusions.charAt(i);      
+    	    //Process char
+    	    if(alpha.contains(String.valueOf(c))){
+    	    	alpha.replace(String.valueOf(c), "");
+    	    }
+    	    else{
+    	    	throw new InvalidAlphabetException("You're trying to exclude character '" + c + "' that doesn't belong to the alphabet.");
+    	    }
+    	}
+    	
+    	// check that alphabet contains no duplicate chars and build alphabet map
+    	char[] alphabet = alpha.toCharArray();
         Map<Character, Integer> alphabetMap = new HashMap<Character,Integer>();
         int index;
         char c;
@@ -57,8 +71,8 @@ public abstract class Alphabet<T extends Alphabet<?>>{
      * 
      * @param alpha A char array containing the valid characters in this alphabet.
      */
-    public Alphabet(char[] alpha) throws InvalidAlphabetException{
-    	this(new String(alpha));
+    public Alphabet(char[] alpha, String exclusions) throws InvalidAlphabetException{
+    	this(new String(alpha), exclusions);
     }
  
     /**
@@ -66,8 +80,8 @@ public abstract class Alphabet<T extends Alphabet<?>>{
      * 
      * @param radix The radix defining the alphabet.
      */
-	public Alphabet(int radix) {
-		this(fromRadix(radix));
+	public Alphabet(int radix, String exclusions) {
+		this(fromRadix(radix), exclusions);
 	}
 	
 	/**

@@ -49,7 +49,10 @@ public class AlphabetConverter<T extends Alphabet<?>> {
 		try {
 			dest = alphabetClass.newInstance();
 			return convert(source,dest,word);
-		} catch (InstantiationException | IllegalAccessException e) {
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

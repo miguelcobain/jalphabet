@@ -42,10 +42,19 @@ Word<Code39> code = c.parseLong(idFromDatabase);
 System.out.println(code);
 // prints "S31"
 ```
+
+JAL supports exclusions. Imagine that you don't want to consider the whole set of an Alphabet. You can create an Alphabet, providing the characters you want to exclude.
+
+```java
+// Create a Code39 alphabet without special characters (for readability purposes, for example)
+Code39 c = new Code39("* -$%./+");
+// Use alphabet normally
+
+```
+
 # TODO #
 
 - add support for arithmetic operations (It would be neat to be able to sum words)
-- add support for exclusions! (manually exclude certain characters from an existing alphabet)
 - add support for the creation of "composite alphabets" through concatenation. For example, an `Alphabet` defined by `Decimal`+"/"+`Code39`. You could have a graph of alphabets, how awesome is that?
 - unit testing
 - more alphabets
