@@ -40,7 +40,7 @@ public abstract class Alphabet<T extends Alphabet<?>>{
     	    char c = exclusions.charAt(i);      
     	    //Process char
     	    if(alpha.contains(String.valueOf(c))){
-    	    	alpha.replace(String.valueOf(c), "");
+    	    	alpha = alpha.replace(String.valueOf(c), "");
     	    }
     	    else{
     	    	throw new InvalidAlphabetException("You're trying to exclude character '" + c + "' that doesn't belong to the alphabet.");
