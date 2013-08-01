@@ -4,7 +4,7 @@ import org.alphabet.Alphabet;
 
 public class Lowercase extends Alphabet<Lowercase>{
 	
-	final static String ALPHABET = "0123456789ABCDEF";
+	final static String ALPHABET = "abcdefghijklmnopqrstuvwxyz";
 
 	public Lowercase() {
 		super(ALPHABET,"");
